@@ -4,8 +4,12 @@
 
 ## 📦 Installation
 
-> [!NOTE]
-> Still work in progress
+```bash
+pip install -r requirements.txt
+chmod +x converter.py
+```
+
+
 
 ## 🚀 Usage
 
