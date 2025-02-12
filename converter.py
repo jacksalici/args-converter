@@ -1,6 +1,11 @@
 import json
 import shlex
 import sys
+import pyperclip
+
+def copy_to_clipboard(text):
+    pyperclip.copy(text)
+    print("And it's already copied onto the clipboard 📋!")
 
 def command_to_launch_json(command_str):
  
@@ -18,16 +23,19 @@ def command_to_launch_json(command_str):
 
 def main():
     if len(sys.argv) < 2:
-        command = input("Enter the Python command string: ")
+        command = input("📥 Enter the Python 🐍 command string: ")
     else:
         command = " ".join(sys.argv[1:])
     
     try:
         launch_config = command_to_launch_json(command)
-        print(json.dumps(launch_config, indent=4))
+        print(f"\n🧃 Arguments list: {json.dumps(launch_config)}.\n")
+        copy_to_clipboard(json.dumps(launch_config, indent=4))
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 if __name__ == "__main__":
     main()
+    
+    
