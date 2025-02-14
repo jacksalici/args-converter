@@ -1,5 +1,19 @@
 #!/usr/bin/env python3
 
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title carg
+# @raycast.mode compact
+
+# Optional parameters:
+# @raycast.icon 🤖
+# @raycast.argument1 { "type": "text", "placeholder": "Placeholder" }
+# @raycast.packageName Misc
+
+# Documentation:
+# @raycast.description Simple tool to convert Python commands to VS Code launch.json args  
+# @raycast.author Jack Salici
+# @raycast.authorURL https://github.com/jacksalici/args-converter
 
 import json
 import shlex
@@ -8,7 +22,6 @@ import pyperclip
 
 def copy_to_clipboard(text):
     pyperclip.copy(text)
-    print("And it's already copied onto the clipboard 📋!")
 
 def command_to_launch_json(command_str):
  
@@ -32,8 +45,9 @@ def main():
     
     try:
         launch_config = command_to_launch_json(command)
-        print(f"\n🧃 Arguments list: {json.dumps(launch_config)}.\n")
+        print(f"\n🥫 Arguments list: {json.dumps(launch_config)}.\n")
         copy_to_clipboard(json.dumps(launch_config, indent=4))
+        print(f"🧃 Parsed and copied 📋 {len(launch_config)} arguments!")
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
